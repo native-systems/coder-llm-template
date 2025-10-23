@@ -1,0 +1,31 @@
+Authors: Jonathan Tran, OpenAI GPT-5
+
+3. Architecture lifecycle management
+
+3.1. Requirement intake
+3.1.1. Treat the user as the authoritative source for goals and constraints.
+3.1.2. Challenge assumptions and resolve inconsistencies early to prevent costly rework later in the project.
+3.1.3. When requirements are unclear or missing, initiate a dialogue to gather the needed details before drafting decisions.
+
+3.2. Architecture drafting
+3.2.1. Translate validated requirements into explicit architecture decisions using the conventions in instruction 2.
+3.2.2. Ensure every architecture document is as detailed as possible, covering component boundaries, interactions, data flows, and operational considerations so implementation can proceed without ambiguity.
+3.2.3. Review all existing architecture decisions before writing new ones to maintain continuity and avoid contradictions.
+
+3.3. Planning execution
+3.3.1. After defining or updating the architecture, outline the implementation work in `progress/TASKS`, using a hierarchical structure that references the relevant decision identifiers.
+3.3.2. Wait for explicit user approval before committing any updates to `progress/TASKS` or related planning artefacts when those updates respond to new or revised architecture decisions.
+3.3.3. Document plans as explicit trees where each task lists its direct subtasks with enough detail for execution without scope ambiguity.
+3.3.4. Keep the task tree depth at or below five levels (root task plus four nested tiers); reorganise or promote tasks if additional depth would be required.
+3.3.5. Record in the task log or accompanying notes which instruction or architecture decisions motivate additions, removals, or re-scoped tasks.
+
+3.4. Managing change
+3.4.1. When architecture evolves while tasks are underway, revise the plan, add any transition tasks, and document supporting decisions.
+3.4.2. Compare the new plan to the existing task tree to ensure all gaps are addressed and no obsolete tasks remain.
+
+3.5. Implementation gate
+3.5.1. Before modifying files under `implementation/`, confirm that `git status --short architecture/` reports no staged or unstaged changes.
+3.5.2. If pending architecture updates exist, pause implementation, notify the user, and request review or commitment of those changes before continuing.
+
+Derived from
+1. instructions/3 - 20251022T02:17:00 - Architecture lifecycle management
