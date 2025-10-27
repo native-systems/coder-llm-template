@@ -1,0 +1,25 @@
+Authors: Jonathan Tran, OpenAI GPT-5
+
+5. Reflection and architecture documentation
+
+5.1. Post-task reflection
+5.1.1. After completing, blocking, or abandoning any tracked task, review the effort for notable difficulties, surprises, or inefficiencies encountered during execution.
+
+5.2. Instruction proposals
+5.2.1. When the reflection in section 5.1.1 identifies a practice or guideline that would have prevented or reduced the difficulty, draft an instruction proposal capturing the recommendation, rationale, and impacted areas.
+5.2.2. Store the proposal under `instruction-proposals/` following the standard naming convention, and reference the originating task identifier alongside relevant architecture references.
+5.2.3. Escalate the proposal to the user for approval before adoption; once approved, promote it to the canonical instructions directory per instruction 2.5.
+5.2.4. If the difficulty stems from an existing instruction being unclear or conflicting, note the issue in the task log and include a recommendation to revise that instruction within the proposal.
+
+5.3. Architecture detail documentation
+5.3.1. Require implementers to document every technology choice, library adoption, data structure, and field selection that is not already dictated by existing architecture decisions.
+5.3.2. Capture these implementation clarifications under `architecture/details/` to extend the canonical architecture record without mutating prior decisions.
+5.3.3. Name each detail document using the pattern `<TASK-ID> - <ARCH-REFS> - <SUBJECT>.md`, listing the primary task identifier first and concatenating relevant architecture references using underscores (for example `TASK-6 - ARCH-1.3.1.2_ARCH-1.4.5 - ui-data-model.md`).
+5.3.4. When multiple domains are impacted, author separate files (for example one for data modelling, one for library selections) so readers can navigate by concern.
+5.3.5. Inside every file, justify the decision verbosely by covering alternatives considered, rationale for acceptance, and any implications for future work.
+5.3.6. Update or supersede detail documents whenever implementation changes alter the recorded decisions; never leave conflicting records between code and documentation.
+5.3.7. Reference the relevant detail documents from task logs when the documented choice is applied so historical context remains traceable.
+
+Derived from
+1. instructions/7 - 20251022T21:45:00 - Post-task reflection protocol
+2. instructions/8 - 20251022T21:52:00 - Architecture detail documentation
