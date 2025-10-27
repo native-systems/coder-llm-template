@@ -1,0 +1,54 @@
+Authors: Jonathan Tran, OpenAI GPT-5
+
+INST-3. Architecture workflow and detail management
+
+INST-3.1. Requirement intake
+INST-3.1.1. Treat the user as the authoritative source for goals and constraints.
+INST-3.1.2. Challenge assumptions and resolve inconsistencies early to prevent costly rework later in the project.
+INST-3.1.3. When requirements are unclear or missing, initiate a dialogue to gather the needed details before drafting decisions.
+
+INST-3.2. Architecture drafting and deliverables
+INST-3.2.1. Translate validated requirements into explicit architecture decisions using the conventions in instruction INST-2.
+INST-3.2.2. Ensure every architecture document is as detailed as possible, covering component boundaries, interactions, data flows, and operational considerations so implementation can proceed without ambiguity.
+INST-3.2.3. Include a detailed tree representation with every architecture deliverable, capturing directories, modules, key files, and significant runtime components.
+INST-3.2.4. Annotate each node in the architecture tree with concise responsibility notes when clarity is needed so future readers can understand the role of every element.
+INST-3.2.5. Present the tree using ASCII or numbered indentation and supplement it with sections describing data flows, integration points, and operational characteristics referenced in the plan.
+INST-3.2.6. Review all existing architecture decisions before writing new ones to maintain continuity and avoid contradictions.
+
+INST-3.3. Planning execution
+INST-3.3.1. After defining or updating the architecture, outline the implementation work in `progress/TASKS`, using a hierarchical structure that references the relevant decision identifiers.
+INST-3.3.2. Wait for explicit user approval before committing any updates to `progress/TASKS` or related planning artefacts when those updates respond to new or revised architecture decisions.
+INST-3.3.3. Document plans as explicit trees where each task lists its direct subtasks with enough detail for execution without scope ambiguity.
+INST-3.3.4. Keep the task tree depth at or below five levels (root task plus four nested tiers); reorganise or promote tasks if additional depth would be required.
+INST-3.3.5. Record in the task log or accompanying notes which instruction or architecture decisions motivate additions, removals, or re-scoped tasks.
+
+INST-3.4. Managing change
+INST-3.4.1. When architecture evolves while tasks are underway, revise the plan, add any transition tasks, and document supporting decisions.
+INST-3.4.2. Compare the new plan to the existing task tree to ensure all gaps are addressed and no obsolete tasks remain.
+
+INST-3.5. Implementation gate
+INST-3.5.1. Before modifying files under `implementation/`, confirm that `git status --short architecture/` reports no staged or unstaged changes.
+INST-3.5.2. If pending architecture updates exist, pause implementation, notify the user, and request review or commitment of those changes before continuing.
+
+INST-3.6. Architecture detail specifications
+INST-3.6.1. Store architecture detail documents under `architecture/details/` to extend the canonical record without altering existing decisions.
+INST-3.6.2. Name each detail document using the pattern `SPEC-<N> - <TASK-ID> - <ARCH-REFS> - <SUBJECT>.md` where `<N>` increments per SPEC document, `<TASK-ID>` includes the driving task identifier(s), `<ARCH-REFS>` concatenates relevant architecture references with underscores, and `<SUBJECT>` summarizes the content scope.
+INST-3.6.3. Preserve the `SPEC-` prefix when renaming detail documents so automated tooling and readers can distinguish them from top-level architecture decisions.
+INST-3.6.4. Update file names whenever additional tasks or architecture references materially influence the documented decision, keeping the naming pattern intact.
+INST-3.6.5. Prefix every numbered section inside a SPEC document with `SPEC-<N>.` so, for example, all headings in `SPEC-1` use identifiers starting with `SPEC-1.`; this keeps internal references globally unique and grep-friendly.
+
+INST-3.7. Detail history tracking
+INST-3.7.1. Maintain an `architecture/details/HISTORY` file that records every SPEC document creation, update, or retirement using one-line summaries.
+INST-3.7.2. Append new entries immediately after authoring or revising a SPEC document, mirroring the naming convention used in the corresponding filename.
+INST-3.7.3. Avoid logging SPEC activity in the top-level `architecture/HISTORY` file unless a change also alters an architectural decision outside the details directory.
+
+INST-3.8. Detail maintenance workflow
+INST-3.8.1. Reference the applicable SPEC documents from task logs and code comments when their guidance is applied to ensure traceability back to detailed rationale.
+INST-3.8.2. Supersede outdated SPEC documents by authoring a new SPEC file with an incremented identifier, then update `architecture/details/HISTORY` to point readers to the replacement.
+INST-3.8.3. Delete a SPEC document only after documenting the rationale for removal and confirming no active tasks or code references depend on it; note the deletion in the details history.
+
+Derived from
+1. instructions/2 - 20251023T12:05:00 - Decision governance and instruction compilation (section 2.6)
+2. instructions/3 - 20251023T12:10:00 - Architecture lifecycle management
+3. instructions/6 - 20251027T11:25:59 - Architecture detail specification conventions
+4. User request on 2025-10-27 to regroup instructions with INST-prefixed sections

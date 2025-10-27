@@ -1,0 +1,75 @@
+Authors: Jonathan Tran, OpenAI GPT-5
+
+INST-4. Implementation workflow and verification
+
+INST-4.1. Task ownership and authorities
+INST-4.1.1. Assign active implementation workers to maintain the task logs in `progress/` that correspond to the work they execute.
+INST-4.1.2. Empower architects to create, restructure, or otherwise edit the contents of `progress/TASKS` whenever planning work is required.
+INST-4.1.3. Restrict implementation workers to updating only the status markers of existing entries in `progress/TASKS` unless they have been explicitly assigned architecture responsibilities for the change.
+INST-4.1.4. Otherwise refrain from editing `progress/` artefacts unless you are fulfilling one of the roles defined in sections INST-4.1.1 through INST-4.1.3.
+
+INST-4.2. Task initiation discipline
+INST-4.2.1. Do not begin the first task until the user explicitly authorises work to start.
+INST-4.2.2. After authorisation, select the most relevant open task from `progress/TASKS`, respecting dependencies and priority indications.
+INST-4.2.3. Review every architecture decision before editing project files or running commands so execution remains aligned with the approved design.
+
+INST-4.3. Progress visibility
+INST-4.3.1. Maintain an up-to-date log under `progress/` named after the active task, recording actions, decisions, and any blockers encountered.
+INST-4.3.2. Maintain `progress/STATUS.md` as a concise overview showing each tracked task’s identifier, title, and current state (`open`, `in-progress`, `done`).
+INST-4.3.3. Update `progress/STATUS.md` whenever a task log entry is appended so the overview always reflects the latest known state.
+INST-4.3.4. Include links or references from the status summary to the corresponding detailed logs for deeper inspection.
+INST-4.3.5. Prefix each entry in `progress/TASKS` with a status marker in square brackets (for example `[open] TASK-3 …`, `[done] …`).
+INST-4.3.6. Adjust status markers as tasks progress and keep subtasks in sync with their parent task state.
+INST-4.3.7. Preserve the existing hierarchy and referenced architecture identifiers in `progress/TASKS` while updating status markers.
+INST-4.3.8. Mark a task or subtask as `[done]` only after its acceptance criteria are satisfied.
+
+INST-4.4. Day-to-day working practices
+INST-4.4.1. Store implementation outputs exclusively under `implementation/` unless another instruction specifies a different location.
+INST-4.4.2. Pause work, document blockers in the task log, and alert the user if the task diverges from scope or encounters major issues.
+INST-4.4.3. Place reusable helper scripts under `tools/` and update `tools/INDEX` with usage notes when creating or modifying helpers.
+
+INST-4.5. Commit discipline
+INST-4.5.1. Apply these commit requirements to every task and subtask tracked in `progress/TASKS` or mandated by instruction.
+INST-4.5.2. Complete each task or subtask in isolation, stage all related changes immediately afterward, and create the commit before starting the next unit of work.
+INST-4.5.3. After finishing a subtask, produce its commit before moving on—even when the user requests several tasks at once—so work never bundles multiple subtasks into a single changeset.
+INST-4.5.4. Restrict the staged files to those relevant to the completed task or subtask unless another instruction mandates additional files.
+INST-4.5.5. Include every `progress/*.log` update in the same commit that records the corresponding work and stage the logs even if general ignore patterns would otherwise exclude them.
+INST-4.5.6. Record the resulting commit hash and message in the corresponding task log, document any missed commits in the log, and create corrective commits as soon as issues are discovered.
+INST-4.5.7. Confirm `git status --short architecture/` reports no staged or unstaged changes before modifying files under `implementation/`, and stop work to notify the user if architecture updates need review or commitment first.
+INST-4.5.8. Avoid appending task log entries solely to note that a commit occurred; rely on the commit history for that traceability.
+INST-4.5.9. Begin every task-related commit message with the associated task or subtask reference (for example `TASK-6`) followed by any concise description needed; include architecture or instruction identifiers when required, and rely on the domain-specific prefixes from INST-2.4 for commits that fall outside task tracking.
+
+INST-4.6. Plan edit approvals
+INST-4.6.1. Require explicit user approval for `progress/TASKS` commits only when architects revise the plan in response to new or updated architecture decisions.
+INST-4.6.2. Permit implementation workers to commit status-only updates to `progress/TASKS` without additional user approval once work authorisation has been granted.
+
+INST-4.7. Verification and dependency discipline
+INST-4.7.1. Before marking any task or subtask complete, confirm that every referenced architecture requirement is satisfied in the real execution environment, not only through mock implementations.
+INST-4.7.2. If gaps remain, document them in the task log, leave the task in progress, and continue implementation until the production-ready behaviour is present.
+INST-4.7.3. When introducing or updating dependencies that require additional setup (for example browser downloads, OS packages, or migrations), apply the change immediately to all relevant Dockerfiles, bootstrap scripts, and documentation.
+INST-4.7.4. Avoid deferring those updates or waiting for user approval when they are necessary for the dependency to function.
+INST-4.7.5. Refrain from prompting the user for approval on work already authorised by standing instructions; only interact when new guidance, proposals, or conflicts demand clarification.
+INST-4.7.6. Where interaction is required, keep requests specific and reference the instruction that mandates user input.
+
+INST-4.8. Implementation traceability
+INST-4.8.1. When implementation fulfils an architecture decision, add a nearby comment or documentation note that cites the most specific decision identifier.
+INST-4.8.2. Review and update decision references whenever related code changes to ensure the linkage remains accurate, removing references only after the underlying decision has been superseded or deprecated through documented instructions.
+
+INST-4.9. Autonomous testing
+INST-4.9.1. Run all relevant automated tests autonomously before reporting task completion, without relying on the user to execute them.
+INST-4.9.2. When test failure diagnostics or reruns are necessary, perform the additional executions independently and summarise the findings for the user.
+INST-4.9.3. Activate existing virtual environments, install dependencies, or provision tooling needed to execute the tests whenever feasible within standing permissions.
+INST-4.9.4. Document any environment setup actions in the active task log so future maintainers understand prerequisite steps.
+INST-4.9.5. Request that the user run tests only when automation is impossible after exhausting available setup options or when explicit user interaction is required.
+INST-4.9.6. When escalation is unavoidable, provide a concise summary of attempted remediation steps and the exact commands the user should execute.
+
+INST-4.10. TODO tagging discipline
+INST-4.10.1. When deferring any implementation work in code or configuration, add a `TODO` comment that cites the relevant task identifier(s) and architecture reference(s) motivating the follow-up (for example `# TODO(TASK-5, ARCH-1.6.2): implement real connector`).
+INST-4.10.2. Place TODO markers immediately adjacent to the deferred logic so future contributors can locate outstanding items without scanning unrelated blocks.
+INST-4.10.3. Mirror deferred work in the associated task log entry, referencing the same task and architecture identifiers to keep textual and in-code notes aligned.
+INST-4.10.4. Remove or update TODO comments as soon as the underlying work is complete to prevent stale reminders from lingering in the codebase.
+
+Derived from
+1. instructions/4 - 20251023T12:15:00 - Implementation and testing governance
+2. User clarification on 2025-10-27 regarding commit isolation and task reference formatting
+3. User request on 2025-10-27 to regroup instructions with INST-prefixed sections

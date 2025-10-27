@@ -1,0 +1,43 @@
+Authors: Jonathan Tran, OpenAI GPT-5
+
+INST-1. Operational stewardship and environment
+
+INST-1.1. Repository baseline safeguards
+INST-1.1.1. Maintain the root folders `architecture/`, `instructions/`, `progress/`, `implementation/`, and `tools/`; create any that are missing before other work begins.
+INST-1.1.2. When `architecture/` is created, also create `architecture/HISTORY` as an empty file if no entries exist so future decisions can append records immediately.
+INST-1.1.3. Before modifying or creating files, run `git rev-parse --is-inside-work-tree` to confirm repository status.
+INST-1.1.4. If the check in INST-1.1.3 fails, run `git init` at the repository root, then rerun the verification to confirm success.
+INST-1.1.5. Record any repository initialization in the active task log whenever implementation work is in progress to maintain traceability.
+INST-1.1.6. You may encapsulate the baseline checks in a helper under `tools/`; document the helper in `tools/INDEX` once created.
+
+INST-1.2. Worker orientation artefacts
+INST-1.2.1. Read every instruction file before acting, and reread when new instructions appear to ensure alignment with the latest guidance.
+INST-1.2.2. When performing the repository initialization checks from INST-1.1, also confirm `AGENTS.md` exists at the repository root.
+INST-1.2.3. If `AGENTS.md` is missing, create it immediately with guidance that every worker must read all files under `instructions/` before acting.
+INST-1.2.4. Keep `AGENTS.md` up to date when onboarding requirements evolve so new workers receive current entry expectations.
+
+INST-1.3. Author identity maintenance
+INST-1.3.1. Maintain a text file named `.me` at the repository root containing a single line with the authoritative user name.
+INST-1.3.2. Read the `.me` file before drafting instruction or architecture documents and use the recorded name as the user author in the `Authors:` field.
+INST-1.3.3. Update the `.me` file if the user provides a new preferred name, and cascade the change by revising subsequent documents that list the user as an author.
+
+INST-1.4. Local environment awareness
+INST-1.4.1. Read the `.local-system` file at the repository root before running any shell command to understand environment limitations.
+INST-1.4.2. Create `.local-system` if it does not exist and document environment constraints and unavailable tooling as they are discovered.
+INST-1.4.3. Append new findings whenever commands fail due to missing binaries, incompatible flags, or other host-specific quirks so future workers avoid repeat issues.
+
+INST-1.5. Repository ignore policy
+INST-1.5.1. Maintain a `.gitignore` file at the repository root that blocks standard transient artefacts produced by Python services, Node tooling, container builds, and local development.
+INST-1.5.2. Exclude Python bytecode, virtual environments, coverage artefacts, and build directories (for example `__pycache__/`, `*.py[cod]`, `.venv/`, `dist/`, `build/`).
+INST-1.5.3. Exclude Node-specific transient files such as `node_modules/`, `npm-debug.log*`, `yarn-error.log`, `coverage/`, and compiled asset directories.
+INST-1.5.4. Exclude local environment and secret files, including `.env`, `.env.*`, `.DS_Store`, IDE project settings (such as `.idea/`, `.vscode/`), and container state directories.
+INST-1.5.5. Exclude the `.me` author identity file so the user name remains untracked while still present locally for reference.
+INST-1.5.6. Whitelist `progress/*.log` so task logs are staged even when general ignore patterns would otherwise skip them.
+INST-1.5.7. Review and extend the `.gitignore` entries when new build or tooling systems are introduced to prevent transient artefacts from entering version control.
+
+INST-1.6. Local metadata hygiene
+INST-1.6.1. Ensure `.local-system` remains ignored by Git alongside `.me` and other local-only artefacts.
+
+Derived from
+1. instructions/1 - 20251023T12:00:00 - Repository and environment stewardship
+2. User request on 2025-10-27 to regroup instructions with INST-prefixed sections

@@ -1,0 +1,16 @@
+Authors: Jonathan Tran, OpenAI GPT-5
+
+INST-5. Continuous improvement and proposals
+
+INST-5.1. Post-task reflection
+INST-5.1.1. After completing, blocking, or abandoning any tracked task, review the effort for notable difficulties, surprises, or inefficiencies encountered during execution.
+
+INST-5.2. Escalating improvement ideas
+INST-5.2.1. When the reflection in section INST-5.1.1 identifies a practice or guideline that would have prevented or reduced the difficulty, draft an instruction proposal capturing the recommendation, rationale, and impacted areas.
+INST-5.2.2. Store the proposal under `instruction-proposals/` following the standard naming convention, and reference the originating task identifier alongside relevant architecture references.
+INST-5.2.3. Escalate the proposal to the user for approval before adoption; once approved, promote it to the canonical instructions directory per instruction INST-2.6.
+INST-5.2.4. If the difficulty stems from an existing instruction being unclear or conflicting, note the issue in the task log and include a recommendation to revise that instruction within the proposal.
+
+Derived from
+1. instructions/5 - 20251023T12:20:00 - Reflection and architecture documentation (sections 5.1 and 5.2)
+2. User request on 2025-10-27 to regroup instructions with INST-prefixed sections
