@@ -1,14 +1,20 @@
-1 - 20251027T13:20:00 - Operational stewardship and environment
-Consolidates repository baselines, worker orientation artefacts, local environment awareness, and ignore hygiene
+1 - 20251027T14:30:00 - Repository and environment stewardship
+Establishes baseline repository checks, worker orientation artefacts, author identity, local environment awareness, and ignore hygiene
 
-2 - 20251027T13:25:00 - Decision documentation governance
-Unifies decision placement, section prefixing, commit formatting, recompilation, and proposal handling guidance
+2 - 20251027T14:35:00 - Instruction and decision governance
+Defines instruction precedence, decision placement, file construction, prefix conventions, history discipline, and proposal handling
 
-3 - 20251027T13:30:00 - Architecture workflow and detail management
-Combines architecture lifecycle planning, deliverable expectations, and SPEC detail maintenance workflows
+3 - 20251027T14:40:00 - Architecture workflow and detail management
+Captures architecture lifecycle practices, planning workflows, SPEC conventions, and detail maintenance procedures
 
-4 - 20251027T13:35:00 - Implementation workflow and verification
-Collects implementation task governance, per-subtask commit discipline, verification practices, and TODO policies
+4 - 20251027T14:45:00 - Implementation workflow and task governance
+Combines implementation authority rules, unified `progress/TASKS` ledger guidance, commit discipline, verification, and TODO policies
 
-5 - 20251027T13:40:00 - Continuous improvement and proposals
-Captures post-task reflection duties and the instruction proposal escalation process
+5 - 20251027T14:50:00 - Task log verbosity and failure tracing
+Mandates comprehensive task logging, failure-first documentation, and resolution summaries feeding improvement ideas
+
+6 - 20251027T14:55:00 - Continuous improvement and proposals
+Requires post-task reflection and escalation of reusable lessons through instruction proposals
+
+7 - 20251027T15:00:00 - Decision reference search discipline
+Establishes explicit identifier citation rules, search-first workflows, helper tooling guidance, and verification steps for grepable references

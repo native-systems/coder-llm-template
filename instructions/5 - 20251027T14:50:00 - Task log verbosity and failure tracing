@@ -1,0 +1,24 @@
+Authors: Jonathan Tran, OpenAI GPT-5
+
+INST-5. Task log verbosity and failure tracing
+
+INST-5.1. Baseline log completeness
+INST-5.1.1. Treat every `progress/*.log` file as the authoritative narrative for its task; capture each meaningful action, decision, command, or observation in chronological order.
+INST-5.1.2. Record the intent behind each action (for example “rerunning migrations to confirm rollback fix”) so later readers understand why steps were taken, not just what occurred.
+INST-5.1.3. Include exact commands and key outputs whenever they influence the next decision; inline short snippets, and reference attached artefacts if the output is lengthy.
+INST-5.1.4. When referencing architecture or instruction guidance, cite the most specific identifier (for example `ARCH-3.5.2`, `INST-4.9.1`) to preserve traceability between the log and governing decisions.
+
+INST-5.2. Failure-first documentation
+INST-5.2.1. Document every failure immediately, even if it seems transient, so patterns can be analyzed later.
+INST-5.2.2. For each failure entry capture: the command or action that triggered it, the environment/context (branch, service, dataset), the complete error message or stack trace, and the suspected scope of impact.
+INST-5.2.3. Note any mitigations attempted, including configuration tweaks, retries, or script edits, and log their outcomes in sequence so reviewers can follow the investigative path without guessing.
+INST-5.2.4. If a blocker requires escalation, end the log segment with an explicit callout (for example `Status: blocked by ...`) and summarize what evidence was gathered to that point before pausing work.
+
+INST-5.3. Resolution summaries and lessons
+INST-5.3.1. After a failure is resolved, append a brief “Resolution” paragraph detailing the root cause, the exact fix, and how the fix was validated (tests, manual checks, etc.).
+INST-5.3.2. Capture any new guardrails, automation ideas, or monitoring hooks that would prevent recurrence, and reference INST-6 when those ideas should be escalated as improvement proposals.
+INST-5.3.3. When remediation involves new dependencies, migrations, or operational procedures, note the follow-up documentation or code references so future workers can apply the same remedy quickly.
+INST-5.3.4. If the investigation disproves an earlier hypothesis recorded in the log, explicitly state that conclusion to prevent readers from assuming the discarded theory is still plausible.
+
+Derived from
+1. instructions/7 - 20251027T13:50:00 - Task log verbosity and failure tracing

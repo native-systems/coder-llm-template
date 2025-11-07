@@ -1,0 +1,31 @@
+Authors: Jonathan Tran, OpenAI GPT-5
+
+INST-7. Decision reference search discipline
+
+INST-7.1. Reference completeness
+INST-7.1.1. Cite each architecture or instruction identifier explicitly (for example `ARCH-1.3.4, ARCH-1.3.5, ARCH-1.3.6, ARCH-1.3.7`) instead of collapsing them into ranges such as `ARCH-1.3.4-1.3.7` so `git grep` finds every occurrence unambiguously.
+INST-7.1.2. When describing contiguous spans, follow the explicit list with plain language such as “covers ARCH-1.3.4 through ARCH-1.3.7” rather than embedding the range inside the identifier itself.
+INST-7.1.3. Break long reference lists onto multiple labeled lines when necessary (`References: ARCH-1.3.4, ARCH-1.3.5` on one line, `References: ARCH-1.3.6, ARCH-1.3.7` on the next) to keep the identifiers readable and individually searchable.
+
+INST-7.2. Reference formatting
+INST-7.2.1. Standardise on a `References:` label (for prose) or `// References:` / `# References:` comment (for code) followed by comma-separated identifiers so every artefact has a predictable search target.
+INST-7.2.2. Mirror the exact same identifiers in commit messages, task logs, and code comments that implement the decision so `git log --grep` and `git grep` produce consistent results, reinforcing INST-4.5.9 and INST-4.8.1.
+INST-7.2.3. When multiple artefacts touch different subsets of decisions, note only the directly applicable identifiers in each place rather than repeating the entire superset; this keeps later searches focused on the precise files that matter.
+
+INST-7.3. Search-first workflow
+INST-7.3.1. Before browsing the tree manually, run `git grep -n "<IDENTIFIER>"` to locate existing references; fall back to `grep -R "<IDENTIFIER>" .` for untracked files or external exports, and document unavailable search tools in `.local-system` per INST-1.4 whenever limitations are discovered.
+INST-7.3.2. Record the exact search commands in the relevant task log entry whenever the results influence the next action per INST-5.1.3 so future readers can reproduce the lookup verbatim.
+INST-7.3.3. Reserve directory browsing for exploratory work when no identifier is yet known, and add a short rationale in the log explaining why search could not be used for that step.
+
+INST-7.4. Tooling helpers
+INST-7.4.1. When recurring compound searches emerge (for example needing both instruction and architecture hits), encapsulate them in helper scripts under `tools/`, keep them executable, and document usage in `tools/INDEX` per INST-4.4.3.
+INST-7.4.2. Default helper implementations to `git grep` with sensible fallbacks (such as `grep -R` when outside the repository) so they work even on systems without dedicated search binaries.
+INST-7.4.3. Update `.local-system` whenever new search tooling becomes available or when limitations (missing binaries, unusual flags) are discovered, ensuring future workers know which commands are reliable.
+
+INST-7.5. Reference verification
+INST-7.5.1. During reviews, code changes, or task log updates, verify that each cited identifier is discoverable via `git grep "<IDENTIFIER>"`; fix the citation immediately if the search returns no matches.
+INST-7.5.2. Do not mark a task complete until every referenced identifier in the affected artefacts passes the searchability check described in INST-7.5.1.
+INST-7.5.3. Note the verification outcome in the task log (for example `References validated per INST-7.5.1`) so the audit trail confirms the search discipline was followed.
+
+Derived from
+1. instructions/8 - 20251027T14:00:00 - Decision reference search discipline

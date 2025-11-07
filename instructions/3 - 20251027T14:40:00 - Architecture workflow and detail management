@@ -8,7 +8,7 @@ INST-3.1.2. Challenge assumptions and resolve inconsistencies early to prevent c
 INST-3.1.3. When requirements are unclear or missing, initiate a dialogue to gather the needed details before drafting decisions.
 
 INST-3.2. Architecture drafting and deliverables
-INST-3.2.1. Translate validated requirements into explicit architecture decisions using the conventions in instruction INST-2.
+INST-3.2.1. Translate validated requirements into explicit architecture decisions using the conventions in INST-2.
 INST-3.2.2. Ensure every architecture document is as detailed as possible, covering component boundaries, interactions, data flows, and operational considerations so implementation can proceed without ambiguity.
 INST-3.2.3. Include a detailed tree representation with every architecture deliverable, capturing directories, modules, key files, and significant runtime components.
 INST-3.2.4. Annotate each node in the architecture tree with concise responsibility notes when clarity is needed so future readers can understand the role of every element.
@@ -48,7 +48,4 @@ INST-3.8.2. Supersede outdated SPEC documents by authoring a new SPEC file with 
 INST-3.8.3. Delete a SPEC document only after documenting the rationale for removal and confirming no active tasks or code references depend on it; note the deletion in the details history.
 
 Derived from
-1. instructions/2 - 20251023T12:05:00 - Decision governance and instruction compilation (section 2.6)
-2. instructions/3 - 20251023T12:10:00 - Architecture lifecycle management
-3. instructions/6 - 20251027T11:25:59 - Architecture detail specification conventions
-4. User request on 2025-10-27 to regroup instructions with INST-prefixed sections
+1. instructions/3 - 20251027T13:30:00 - Architecture workflow and detail management

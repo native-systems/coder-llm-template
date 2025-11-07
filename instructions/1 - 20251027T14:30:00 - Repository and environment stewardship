@@ -1,6 +1,6 @@
 Authors: Jonathan Tran, OpenAI GPT-5
 
-INST-1. Operational stewardship and environment
+INST-1. Repository and environment stewardship
 
 INST-1.1. Repository baseline safeguards
 INST-1.1.1. Maintain the root folders `architecture/`, `instructions/`, `progress/`, `implementation/`, and `tools/`; create any that are missing before other work begins.
@@ -11,10 +11,10 @@ INST-1.1.5. Record any repository initialization in the active task log whenever
 INST-1.1.6. You may encapsulate the baseline checks in a helper under `tools/`; document the helper in `tools/INDEX` once created.
 
 INST-1.2. Worker orientation artefacts
-INST-1.2.1. Read every instruction file before acting, and reread when new instructions appear to ensure alignment with the latest guidance.
-INST-1.2.2. When performing the repository initialization checks from INST-1.1, also confirm `AGENTS.md` exists at the repository root.
-INST-1.2.3. If `AGENTS.md` is missing, create it immediately with guidance that every worker must read all files under `instructions/` before acting.
-INST-1.2.4. Keep `AGENTS.md` up to date when onboarding requirements evolve so new workers receive current entry expectations.
+INST-1.2.1. Read every instruction file before acting, and reread the full set whenever new instructions appear so alignment with the latest guidance is guaranteed.
+INST-1.2.2. During the repository baseline checks, confirm `AGENTS.md` exists at the repository root so new workers can start immediately.
+INST-1.2.3. If `AGENTS.md` is missing, create it at once with guidance that every worker must read all instruction files before acting.
+INST-1.2.4. Keep `AGENTS.md` up to date when onboarding requirements evolve so new workers receive the current expectations.
 
 INST-1.3. Author identity maintenance
 INST-1.3.1. Maintain a text file named `.me` at the repository root containing a single line with the authoritative user name.
@@ -39,5 +39,4 @@ INST-1.6. Local metadata hygiene
 INST-1.6.1. Ensure `.local-system` remains ignored by Git alongside `.me` and other local-only artefacts.
 
 Derived from
-1. instructions/1 - 20251023T12:00:00 - Repository and environment stewardship
-2. User request on 2025-10-27 to regroup instructions with INST-prefixed sections
+1. instructions/1 - 20251027T13:20:00 - Operational stewardship and environment
