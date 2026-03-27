@@ -1,0 +1,43 @@
+Authors: Jonathan Tran, OpenAI GPT-5, Claude Sonnet 4.6
+
+INST-2. Repository and environment stewardship
+
+INST-2.1. Repository baseline safeguards
+INST-2.1.1. Maintain the root folders `architecture/`, `instructions/`, `progress/`, `implementation/`, and `tools/`; create any that are missing before other work begins.
+INST-2.1.2. When `architecture/` is created, also create `architecture/HISTORY` as an empty file if no entries exist so future decisions can append records immediately.
+INST-2.1.3. Before modifying or creating files, run `git rev-parse --is-inside-work-tree` to confirm repository status.
+INST-2.1.4. If the check in INST-2.1.3 fails, run `git init` at the repository root, then rerun the verification to confirm success.
+INST-2.1.5. Record any repository initialisation in the active task log whenever implementation work is in progress to maintain traceability.
+INST-2.1.6. You may encapsulate the baseline checks in a helper under `tools/`; document the helper in `tools/INDEX` once created.
+
+INST-2.2. Worker orientation artefacts
+INST-2.2.1. Read every instruction file before acting, and reread the full set whenever new instructions appear so alignment with the latest guidance is guaranteed.
+INST-2.2.2. During the repository baseline checks, confirm `AGENTS.md` exists at the repository root so new workers can start immediately.
+INST-2.2.3. If `AGENTS.md` is missing, create it at once with guidance that every worker must read all instruction files before acting.
+INST-2.2.4. Keep `AGENTS.md` up to date when onboarding requirements evolve so new workers receive the current expectations.
+
+INST-2.3. Author identity maintenance
+INST-2.3.1. Maintain a text file named `.me` at the repository root containing a single line with the authoritative user name.
+INST-2.3.2. Read the `.me` file before drafting instruction or architecture documents and use the recorded name as the user author in the `Authors:` field.
+INST-2.3.3. Update the `.me` file if the user provides a new preferred name, and cascade the change by revising subsequent documents that list the user as an author.
+
+INST-2.4. Local environment awareness
+INST-2.4.1. Read the `.local-system` file at the repository root before running any shell command to understand environment limitations.
+INST-2.4.2. Create `.local-system` if it does not exist and document environment constraints and unavailable tooling as they are discovered.
+INST-2.4.3. Append new findings whenever commands fail due to missing binaries, incompatible flags, or other host-specific quirks so future workers avoid repeat issues.
+
+INST-2.5. Repository ignore policy
+INST-2.5.1. Maintain a `.gitignore` file at the repository root that blocks standard transient artefacts produced by Python services, Node tooling, container builds, and local development.
+INST-2.5.2. Exclude Python bytecode, virtual environments, coverage artefacts, and build directories (for example `__pycache__/`, `*.py[cod]`, `.venv/`, `dist/`, `build/`).
+INST-2.5.3. Exclude Node-specific transient files such as `node_modules/`, `npm-debug.log*`, `yarn-error.log`, `coverage/`, and compiled asset directories.
+INST-2.5.4. Exclude local environment and secret files, including `.env`, `.env.*`, `.DS_Store`, IDE project settings (such as `.idea/`, `.vscode/`), and container state directories.
+INST-2.5.5. Exclude the `.me` author identity file so the user name remains untracked while still present locally for reference.
+INST-2.5.6. Whitelist `progress/*.tasklog` so task logs are staged even when general ignore patterns would otherwise skip them.
+INST-2.5.7. Review and extend the `.gitignore` entries when new build or tooling systems are introduced to prevent transient artefacts from entering version control.
+
+INST-2.6. Local metadata hygiene
+INST-2.6.1. Ensure `.local-system` remains ignored by Git alongside `.me` and other local-only artefacts.
+
+Derived from
+1. instructions/1 - 20251027T14:30:00 - Repository and environment stewardship
+2. instructions/9 - 20260327T10:05:00 - Clarifications and amendments (INST-9.4): task log extension updated from .log to .tasklog; INST-2.5.6 whitelist entry updated accordingly

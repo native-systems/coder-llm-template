@@ -1,20 +1,23 @@
-1 - 20251027T14:30:00 - Repository and environment stewardship
-Establishes baseline repository checks, worker orientation artefacts, author identity, local environment awareness, and ignore hygiene
+1 - 20260327T11:00:00 - Worker roles and governance
+Defines the three worker roles (instructor, architect, implementation worker), single-role discipline, fixed sequential ordering, and the post-task proposal exception; resolves SPEC authorship conflict in favour of implementation workers
 
-2 - 20251027T14:35:00 - Instruction and decision governance
-Defines instruction precedence, decision placement, file construction, prefix conventions, history discipline, and proposal handling
+2 - 20260327T11:05:00 - Repository and environment stewardship
+Carries forward all stewardship rules; updates task log whitelist from progress/*.log to progress/*.tasklog per INST-9.4
 
-3 - 20251027T14:40:00 - Architecture workflow and detail management
-Captures architecture lifecycle practices, planning workflows, SPEC conventions, and detail maintenance procedures
+3 - 20260327T11:10:00 - Instruction and decision governance
+Carries forward instruction precedence, decision file conventions, prefix rules, history discipline, and proposal handling unchanged
 
-4 - 20251027T14:45:00 - Implementation workflow and task governance
-Combines implementation authority rules, unified `progress/TASKS` ledger guidance, commit discipline, verification, and TODO policies
+4 - 20260327T11:15:00 - Architecture workflow and detail management
+Carries forward architecture lifecycle practices; updates SPEC authorship to implementation workers and TASKS approval boundary to structural-changes-only per INST-9.5, INST-9.6
 
-5 - 20251027T14:50:00 - Task log verbosity and failure tracing
-Mandates comprehensive task logging, failure-first documentation, and resolution summaries feeding improvement ideas
+5 - 20260327T11:20:00 - Implementation workflow and task governance
+Carries forward implementation authority, task ledger, commit discipline, verification, and TODO policies; adds progress scope section (INST-5.1) and per-session authorisation rule (INST-5.3.1) per INST-9.1, INST-9.2
 
-6 - 20251027T14:55:00 - Continuous improvement and proposals
-Requires post-task reflection and escalation of reusable lessons through instruction proposals
+6 - 20260327T11:25:00 - Task log verbosity and failure tracing
+Carries forward log completeness, failure documentation, and resolution summary rules; updates file extension from .log to .tasklog per INST-9.4
 
-7 - 20251027T15:00:00 - Decision reference search discipline
-Establishes explicit identifier citation rules, search-first workflows, helper tooling guidance, and verification steps for grepable references
+7 - 20260327T11:30:00 - Continuous improvement and proposals
+Carries forward post-task reflection and proposal escalation rules unchanged
+
+8 - 20260327T11:35:00 - Decision reference search discipline
+Carries forward identifier citation and search-first rules; extends reference verification to three-step lookup covering committed, staged, and untracked content per INST-9.3

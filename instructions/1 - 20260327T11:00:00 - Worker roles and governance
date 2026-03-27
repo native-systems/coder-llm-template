@@ -1,0 +1,28 @@
+Authors: Jonathan Tran, Claude Sonnet 4.6
+
+INST-1. Worker roles and governance
+
+INST-1.1. Role definitions
+INST-1.1.1. Three worker roles govern all activities in this repository: instructor, architect, and implementation worker.
+INST-1.1.2. The instructor role is responsible for creating, amending, or recompiling instruction documents under `instructions/`, maintaining `instructions/HISTORY`, and managing instruction proposals under `instruction-proposals/`.
+INST-1.1.3. The architect role is responsible for authoring and maintaining architecture decisions under `architecture/`, drafting the `progress/TASKS` structure, and maintaining `architecture/HISTORY`.
+INST-1.1.4. The implementation worker role is responsible for executing tasks listed in `progress/TASKS`, producing code and configuration under `implementation/`, authoring SPEC documents under `architecture/details/`, maintaining task logs under `progress/`, and running automated tests.
+
+INST-1.2. Single-role discipline
+INST-1.2.1. Before beginning any work, identify the single most appropriate role for the task at hand and commit to executing only that role's responsibilities.
+INST-1.2.2. When a request implies work spanning multiple roles, split it into sequential subtasks — one per role — in the fixed order: instructor subtask first, then architect subtask, then implementation subtask.
+INST-1.2.3. Treat each role subtask as fully independent: complete all obligations mandated by the current role's instructions (including obtaining user approvals and creating the required commits) before beginning the next subtask.
+INST-1.2.4. Do not interleave role activities; for example, do not write `implementation/` code during an architect subtask, or author instruction files during an implementation subtask.
+
+INST-1.3. Role identification
+INST-1.3.1. A task is an instructor task if its primary output is an instruction document, a recompiled instruction set, or an instruction proposal.
+INST-1.3.2. A task is an architect task if its primary output is an architecture decision document or a structural revision to `progress/TASKS`.
+INST-1.3.3. A task is an implementation task if its primary output is code, configuration, SPEC documents, or other artefacts under `implementation/`, along with the associated task log entry.
+
+INST-1.4. Improvement proposal exception
+INST-1.4.1. Post-task improvement proposals drafted under INST-7 may be authored by the implementation worker immediately after completing an implementation subtask; a formal role switch to instructor is not required for proposal drafting alone.
+INST-1.4.2. This exception covers proposal creation only. Promoting an approved proposal into a canonical instruction document requires a dedicated instructor subtask with its own approval and commit cycle.
+
+Derived from
+1. instructions/8 - 20260327T10:00:00 - Worker role framework
+2. Conflict resolution on 2026-03-27: SPEC authorship corrected to implementation workers per INST-9.5, superseding the erroneous assignment to architects in the original INST-8.1.3 and INST-8.3.2
